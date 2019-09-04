@@ -1,0 +1,50 @@
+create table Register
+(
+Username varchar(50) primary key,
+Password varchar(50),
+FirstName varchar(50),
+LastName varchar(50),
+DOB date,
+Gender varchar(10),
+Email varchar(50),
+Address varchar(100),
+State varchar(50),
+City varchar(50),
+Mobile varchar(50),
+Role varchar(50) Default "Customer",
+Status varchar(50) Default "Unblock"
+ );
+ 
+create table Branch
+(
+	BCode int primary key AUTO_INCREMENT,
+	Address varchar(100),
+	City  varchar(50),
+	State  varchar(50),	
+	Mobile  varchar(50),	
+	Date  date
+)
+
+
+create table Manager
+(
+	MID int Primary Key AUTO_INCREMENT,
+	Username varchar(50)  references Register(Username),
+	BCode int references Branch(BCode),
+	Date date
+)
+
+create table User
+(
+	UID int Primary Key AUTO_INCREMENT,
+	Username varchar(50),
+	BCode int,
+	Date date,
+	Pid int	
+)
+
+create table Package
+(
+	PID int primary key AUTO_INCREMENT,
+	PName varchar(50)
+) 
